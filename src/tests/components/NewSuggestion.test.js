@@ -35,7 +35,7 @@ describe('Given NewSuggestion', () => {
 
       expect(form.length).to.equal(1)
       expect(form.childAt(0).is('input.new-suggestion')).to.be.true()
-      expect(form.childAt(1).type()).to.equal('button')
+      expect(form.childAt(1).type()).to.equal('input')
     })
 
     it('should contain no text in the input', () => {
@@ -78,7 +78,7 @@ describe('Given NewSuggestion', () => {
         })
 
         it('should clear the input', () => {
-          const input = component.find('input')
+          const input = component.find('input.new-suggestion')
 
           expect(input.props().value).to.equal('')
         })

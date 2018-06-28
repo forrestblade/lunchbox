@@ -1,16 +1,16 @@
 language: node_js
 cache:
   directories:
-    - ~/.npm
+    - ~/yarn.lock
     - ~/node_modules
 notifications:
   email: false
 node_js:
   - '8'
 scripts:
-  - npm test
+  - yarn test
 after_success:
-  - npm run travis-deploy-once "npm run semantic-release"
+  - yarn run travis-deploy-once "yarn run semantic-release"
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/

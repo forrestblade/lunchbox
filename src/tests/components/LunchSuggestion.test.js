@@ -7,7 +7,11 @@ import LunchSuggestion from '../../components/LunchSuggestion';
 
 describe('App', () => {
     function requiredProps(overrides) {
-      let props = {}
+      let props = {
+        suggestion: {
+          name: "Forrest"
+        }
+      }
 
       return {
         ...props,
@@ -16,7 +20,7 @@ describe('App', () => {
     }
 
     function renderComponent(props=requiredProps()) {
-      return shallow(<LunchSuggestion/>)
+      return shallow(<LunchSuggestion {...props}/>)
     }
 
 
@@ -24,11 +28,6 @@ describe('App', () => {
         let component = renderComponent()
 
         expect(component.is('section.Suggestion'))
-    })
-
-
-    it('should', () => {
-      
     })
 
 

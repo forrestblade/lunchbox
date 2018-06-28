@@ -7,24 +7,19 @@ import NewSuggestion from './NewSuggestion';
 function handleSubmit(restaurant) {
   console.log(restaurant)
   this.props.addRestaurant(restaurant)
-  .then(data => console.log(data))
 
   this.props.fetchRestaurants()
     .then(data => {
-      console.log(data)
       const restaurant = data
       this.setState({restaurant})
-      console.log(this.state)
     })
 }
 
 function newSuggestion() {
   this.props.fetchRestaurants()
   .then(data => {
-    console.log(data)
     const restaurant = data
     this.setState({restaurant})
-    console.log(this.state)
   })
 }
 
@@ -37,10 +32,8 @@ class App extends Component {
   componentDidMount = () => {
     this.props.fetchRestaurants()
     .then(data => {
-      console.log(data)
       const restaurant = data
       this.setState({restaurant})
-      console.log(this.state)
     })
   }
 

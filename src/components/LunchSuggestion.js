@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const LunchSuggestion = (props) => {
   return (
-    <section className="ph3 ph5-ns pv5">
+    <section className="Suggestion ph3 ph5-ns pv5">
   <article className="mw8 center br2 ba b--light-blue bg-lightest-blue">
     <div className="dt-ns dt--fixed-ns w-100">
       <div className="pa3 pa4-ns dtc-ns v-mid">

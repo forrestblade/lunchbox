@@ -25,12 +25,6 @@ describe('App', () => {
 
   describe('When the application mounts', () => {
 
-    it('renders without crashing', () => {
-      const div = document.createElement('div');
-      ReactDOM.render(<App />, div);
-      ReactDOM.unmountComponentAtNode(div);
-    });
-
     it('should exist with a specifying className', () => {
       const component = renderComponent()
 

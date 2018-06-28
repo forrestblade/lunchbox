@@ -23,6 +23,5 @@ export const addRestaurant = (restaurant) => {
           'Content-Type': 'application/json'
         }
       })
-      .then(resp => console.log(resp))
       .catch(err => err)
 }

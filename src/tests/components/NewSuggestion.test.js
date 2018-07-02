@@ -3,6 +3,7 @@ import { expect } from 'code'
 import { shallow } from 'enzyme'
 import sinon from 'sinon'
 import NewSuggestion from '../../components/NewSuggestion'
+import Geosuggest from 'react-geosuggest'
 
 describe('Given NewSuggestion', () => {
   let handleSubmitStub = sinon.stub()
@@ -64,12 +65,12 @@ describe('Given NewSuggestion', () => {
       })
 
       it('should update state with the input value', () => {
-        expect(component.state().restaurants.name).to.equal(mockText)
+        expect(component.state().restaurants).to.equal(mockText)
       })
       describe('When the user clicks the sumbit button', () => {
         beforeEach(() => {
           component
-            .find('form')
+            .find('input.new-submit')
             .simulate('submit', { preventDefault: sinon.spy() })
         })
 

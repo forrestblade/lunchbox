@@ -1,25 +1,24 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
-const LunchSuggestion = (props) => {
+const LunchSuggestion = props => {
   return (
-    <section className="Suggestion ph3 ph5-ns pv5">
-  <article className="mw8 center br2 ba b--light-blue bg-lightest-blue">
-    <div className="dt-ns dt--fixed-ns w-100">
-      <div className="pa3 pa4-ns dtc-ns v-mid">
-        <div>
-          <h2 className="fw4 blue mt0 mb3">{props.suggestion.name}</h2>
-          <p className="black-70 measure lh-copy mv0">
-            This is suporting copy for the wonderful promo catchphrase that is going to be used.
-          </p>
+    <article className="mw8 center br2 ba shadow-5 ma5 b--gold bg-light-yellow">
+      <div className="dt-ns dt--fixed-ns w-100">
+        <div className="pa3 pa4-ns dtc-ns v-mid">
+          <div>
+            <h2 className="fw4 gray mt0 mb3">{props.suggestion.description}</h2>
+          </div>
+        </div>
+        <div className="pa3 pa4-ns dtc-ns v-mid">
+          <a
+            onClick={props.newSuggestion}
+            className="no-underline shadow-5 f6 tc db w-100 pv3 bg-animate bg-blue hover-bg-dark-blue light-yellow br2"
+          >
+            Something else?
+          </a>
         </div>
       </div>
-      <div className="pa3 pa4-ns dtc-ns v-mid">
-        <a onClick={props.newSuggestion} className="no-underline f6 tc db w-100 pv3 bg-animate bg-blue hover-bg-dark-blue white br2">Something else?</a>
-      </div>
-    </div>
-  </article>
-</section>
+    </article>
   )
 }
 

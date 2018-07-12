@@ -1,6 +1,8 @@
+import { addRestaurant } from '../services/api'
+
 export function handleSubmit () {
-  this.setState({ restaurants: {} })
+  this.setState({ restaurant: {} })
   this._geoSuggest.focus()
   this._geoSuggest.clear()
-  this.props.handleSubmit(this.state.restaurants)
+  addRestaurant(this.state.restaurant)
 }

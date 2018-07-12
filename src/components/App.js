@@ -1,19 +1,8 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { fetchRestaurants, addRestaurant } from '../services/api'
+import { fetchRestaurants } from '../services/api'
 import LunchSuggestion from './LunchSuggestion'
 import NewSuggestion from './NewSuggestion'
-import { newSuggestion } from '../utils/newSuggestion'
-import { interval } from '../utils/interval'
-
-function handleSubmit (restaurant) {
-  this.props.addRestaurant(restaurant)
-  this.props.fetchRestaurants()
-    .then(data => {
-      const restaurant = data
-      this.setState({ restaurant })
-    })
-}
+import { fetchRestaurant } from '../utils/fetchRestaurant'
 
 class App extends Component {
   state = {
@@ -21,11 +10,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    this.props.fetchRestaurants().then(data => {
-      const restaurant = data
-      this.setState({ restaurant })
-    })
-    interval.call(this)
+    fetchRestaurant.call(this)
   }
 
   render () {
@@ -39,22 +24,12 @@ class App extends Component {
         </div>
         <LunchSuggestion
           suggestion={this.state.restaurant}
-          newSuggestion={newSuggestion.bind(this)}
+          newSuggestion={() => fetchRestaurants.call(this)}
         />
-        <NewSuggestion handleSubmit={handleSubmit.bind(this)} />
+        <NewSuggestion />
       </main>
     )
   }
-}
-
-App.defaultProps = {
-  fetchRestaurants,
-  addRestaurant
-}
-
-App.propTypes = {
-  fetchRestaurants: PropTypes.func.isRequired,
-  addRestaurant: PropTypes.func.isRequired
 }
 
 export default App

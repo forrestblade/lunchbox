@@ -1,8 +1,8 @@
 /* eslint-env jest */
-import sinon from 'sinon'
-import { expect } from 'code'
-import 'isomorphic-fetch'
-import { fetchRestaurants, addRestaurant } from '../../services/api'
+import sinon from '../../../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/sinon'
+import { expect } from '../../../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/code'
+import '../../../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/isomorphic-fetch'
+import { fetchRestaurants } from '../../services/api'
 
 describe('Given a restaurant server', () => {
   let fetchStub
@@ -61,19 +61,19 @@ describe('Given a restaurant server', () => {
       })
     })
 
-    describe('When the serve is POSTED to', () => {
-      let mockRestaurant = 'Mcdonalds'
-      const expectedFetchBody = {
-        method: 'POST',
-        body: JSON.stringify({restaurant: mockRestaurant}),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
+    // describe('When the serve is POSTED to', () => {
+    //   let mockRestaurant = 'Mcdonalds'
+    //   const expectedFetchBody = {
+    //     method: 'POST',
+    //     body: JSON.stringify({restaurant: mockRestaurant}),
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     }
+    //   }
 
-      addRestaurant(mockRestaurant)
-      sinon.assert.calledOnce(fetchStub)
-      sinon.assert.calledWithExactly(fetchStub, 'localhost:3001/restaurants', expectedFetchBody)
-    })
+    //   addRestaurant(mockRestaurant)
+    //   sinon.assert.calledOnce(fetchStub)
+    //   sinon.assert.calledWithExactly(fetchStub, 'localhost:3001/restaurants', expectedFetchBody)
+    // })
   })
 })

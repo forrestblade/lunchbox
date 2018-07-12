@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import Geosuggest from 'react-geosuggest'
 import { handleSubmit } from '../utils/handleNewSubmit'
 
-function handleChange (e) {
-  this.setState({ restaurants: e })
+function handleChange (restaurant) {
+  this.setState({ restaurant })
 }
 
 export default class NewSuggestion extends Component {
   state = {
-    restaurants: {}
+    restaurant: {}
   }
 
   render () {

@@ -1,8 +1,8 @@
 /* eslint-env jest */
-import React from 'react'
-import { expect } from 'code'
-import { shallow } from 'enzyme'
-import sinon from 'sinon'
+import React from '../../../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react'
+import { expect } from '../../../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/code'
+import { shallow } from '../../../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/enzyme'
+import sinon from '../../../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/sinon'
 import App from '../../components/App'
 
 describe('App', () => {
@@ -139,8 +139,17 @@ describe('App', () => {
         sinon.restore()
       })
 
-      it('should update the restaurant', () => {
-        expect(component.state().restaurants).to.equal(mockRestaurant)
+      it('should fetch the random restaurant', () => {
+        return fetchRandomRestaurantStub().then(data => {
+          expect(data).to.equal(mockRestaurant)
+        })
+      })
+
+      it('should update the state', () => {
+        return fetchRandomRestaurantStub().then(() => {
+          component.update()
+          expect(component.state('restaurant')).to.equal(mockRestaurant)
+        })
       })
     })
   })

@@ -1,24 +1,21 @@
 import 'isomorphic-fetch'
 
-export const fetchRestaurants = () => {
+export function fetchRestaurants () {
   return window.fetch(`http://localhost:3001/restaurants`)
-    .then(res => {
-      return res.json()
-    })
+    .then(res => res.json())
     .then(data => {
-      return data
+      const restaurant = data
+      this.setState({ restaurant })
     })
-    .catch(err => {
-      return err
-    })
+    .catch(err => err)
 }
 
 export const addRestaurant = restaurant => {
   return window.fetch('http://localhost:3001/restaurants', {
     method: 'POST',
     body: JSON.stringify(restaurant),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }).catch(err => err)
+    headers: { 'Content-Type': 'application/json' }
+  })
+    .then(fetchRestaurants.call(this))
+    .catch(err => err)
 }

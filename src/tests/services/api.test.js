@@ -1,7 +1,8 @@
+/* eslint-env jest */
 import sinon from 'sinon'
 import { expect } from 'code'
 import 'isomorphic-fetch'
-import { fetchRestaurants } from '../../services/api'
+import { fetchRestaurants, addRestaurant } from '../../services/api'
 
 describe('Given a restaurant server', () => {
   let fetchStub
@@ -58,6 +59,21 @@ describe('Given a restaurant server', () => {
             expect(e).to.not.equal(undefined)
           })
       })
+    })
+
+    describe('When the serve is POSTED to', () => {
+      let mockRestaurant = 'Mcdonalds'
+      const expectedFetchBody = {
+        method: 'POST',
+        body: JSON.stringify({restaurant: mockRestaurant}),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+
+      addRestaurant(mockRestaurant)
+      sinon.assert.calledOnce(fetchStub)
+      sinon.assert.calledWithExactly(fetchStub, 'localhost:3001/restaurants', expectedFetchBody)
     })
   })
 })

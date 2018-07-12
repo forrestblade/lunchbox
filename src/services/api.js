@@ -1,7 +1,7 @@
 import 'isomorphic-fetch'
 
 export const fetchRestaurants = () => {
-  return fetch(`http://localhost:3001/restaurants`)
+  return window.fetch(`http://localhost:3001/restaurants`)
     .then(res => {
       return res.json()
     })
@@ -14,7 +14,7 @@ export const fetchRestaurants = () => {
 }
 
 export const addRestaurant = restaurant => {
-  return fetch('http://localhost:3001/restaurants', {
+  return window.fetch('http://localhost:3001/restaurants', {
     method: 'POST',
     body: JSON.stringify(restaurant),
     headers: {

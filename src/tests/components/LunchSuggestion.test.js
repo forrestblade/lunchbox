@@ -1,8 +1,7 @@
+/* eslint-env jest */
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { expect } from 'code'
-import { shallow, mount } from 'enzyme'
-import sinon from 'sinon'
+import { shallow } from 'enzyme'
 import LunchSuggestion from '../../components/LunchSuggestion'
 
 describe('App', () => {

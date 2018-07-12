@@ -3,22 +3,16 @@ import PropTypes from 'prop-types'
 import { fetchRestaurants, addRestaurant } from '../services/api'
 import LunchSuggestion from './LunchSuggestion'
 import NewSuggestion from './NewSuggestion'
+import { newSuggestion } from '../utils/newSuggestion'
+import { interval } from '../utils/interval'
 
-function handleSubmit(restaurant) {
-  console.log(restaurant)
+function handleSubmit (restaurant) {
   this.props.addRestaurant(restaurant)
-
-  this.props.fetchRestaurants().then(data => {
-    const restaurant = data
-    this.setState({ restaurant })
-  })
-}
-
-function newSuggestion() {
-  this.props.fetchRestaurants().then(data => {
-    const restaurant = data
-    this.setState({ restaurant })
-  })
+  this.props.fetchRestaurants()
+    .then(data => {
+      const restaurant = data
+      this.setState({ restaurant })
+    })
 }
 
 class App extends Component {
@@ -31,21 +25,15 @@ class App extends Component {
       const restaurant = data
       this.setState({ restaurant })
     })
-
-    setInterval(() => {
-      this.props.fetchRestaurants().then(data => {
-        const restaurant = data
-        this.setState({ restaurant })
-      })
-    }, 30000)
+    interval.call(this)
   }
 
-  render() {
+  render () {
     return (
-      <main className="App code vh-100 dt w-100 bg-orange">
-        <div className="tc-l mt4 mt5-m mt6-l ph3">
-          <h1 className="f2 f1-l fw2 white-90 mb0 lh-title">LunchBox</h1>
-          <h2 className="fw1 f3 white-80 mt3 mb4">
+      <main className='App code vh-100 dt w-100 bg-orange'>
+        <div className='tc-l mt4 mt5-m mt6-l ph3'>
+          <h1 className='f2 f1-l fw2 white-90 mb0 lh-title'>LunchBox</h1>
+          <h2 className='fw1 f3 white-80 mt3 mb4'>
             The unofficial office lunch spot
           </h2>
         </div>

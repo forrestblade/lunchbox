@@ -39,5 +39,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/forrestblade/lunchbox.git"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }
